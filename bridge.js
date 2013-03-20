@@ -1,14 +1,10 @@
 // Implementor 
-function sayHello() {
-    this.greet = function (str) {
-        alert('Hello, ' + str);
-    };
+function sayHello(str) {
+    alert('Hello, ' + str);
 }
 // Implementor 
-function sayHi() {
-    this.greet = function (str) {
-        alert('Hi, ' + str);
-    };
+function sayHi(str) {
+    alert('Hi, ' + str);
 }
 
 
@@ -26,7 +22,7 @@ function friend() {
 // Refined Abstraction
 function David() {
     this.greet = function () {
-        this.getGreeting().greet('I am David.');
+        this.getGreeting()('I am David.');
     };
 }
 David.prototype = new friend();
@@ -34,19 +30,19 @@ David.prototype = new friend();
 // Refined Abstraction
 function Lucy() {
     this.greet = function () {
-        this.getGreeting().greet('I am Lucy.');
+        this.getGreeting()('I am Lucy.');
     };
 }
 Lucy.prototype = new friend();
 
 var d = new David();
-d.setGreeting(new sayHi());
+d.setGreeting(sayHi);
 d.greet();
-d.setGreeting(new sayHello());
+d.setGreeting(sayHello);
 d.greet();
 
 var l = new Lucy();
-l.setGreeting(new sayHi());
+l.setGreeting(sayHi);
 l.greet();
-l.setGreeting(new sayHello());
+l.setGreeting(sayHello);
 l.greet();
