@@ -1,0 +1,38 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <title>x-iron/JsDesignPattern</title>
+    <script type="text/javascript" src="Patterns.js"></script>
+    <script type="text/javascript" src="bridge.js"></script>
+    <script type="text/javascript" src="adapter.js"></script>
+</head>
+<body>
+<h1>
+    x-iron/JsDesignPattern
+</h1>
+
+<p>
+    Please Open Console Window to watch the output.
+</p>
+
+<p>
+    Available pattern examples: <span id="JsDesignPattern-available"></span>
+</p>
+<script>
+    (function() {
+        (function() {
+            var text = [];
+            var patterns = Patterns.getAvailablePatterns();
+            for (var item in patterns) {
+                text.push(item);
+            }
+            document.getElementById('JsDesignPattern-available').innerText = text.join(', ') + '.';
+        })();
+        var runningTargets = ['Bridge','Adaptor'];
+        for (var i = 0; i < runningTargets.length; i++) {
+            Patterns.getPatternsByName([runningTargets[i]])();
+        }
+    })();
+</script>
+</body>
+</html>
