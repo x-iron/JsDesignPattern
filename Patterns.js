@@ -1,15 +1,17 @@
 var Patterns = {};
 (function() {
     var items = {};
+
+    function logFactory(name) {
+        return function(text) {
+            console.log('[' + name + ']: ' + text);
+        };
+    }
+
     Patterns.adopt = function(fn, name) {
-        function logFactory() {
-            return function(text) {
-                console.log('[' + name + ']: ' + text);
-            };
-        }
 
         items[name] = function() {
-            fn(logFactory());
+            fn(logFactory(name));
         };
     };
     Patterns.getAvailablePatterns = function() {
